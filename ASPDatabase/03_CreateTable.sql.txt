@@ -1,0 +1,71 @@
+USE PortfolioDB;
+GO
+
+-- 관세율 테이블
+CREATE TABLE customs.TariffRate (
+    TariffRateId  INT            PRIMARY KEY IDENTITY(1,1),
+    HsCode        VARCHAR(10)    NOT NULL,
+    ItemCategory  VARCHAR(100)   NOT NULL,
+    RatePercent   DECIMAL(5,2)   NOT NULL
+);
+
+-- 화물 메인 테이블
+CREATE TABLE customs.CargoStatus (
+    CargoId       INT            PRIMARY KEY IDENTITY(1,1),
+    CargoNumber   VARCHAR(20)    NOT NULL,
+    LastHistSeq   INT            NOT NULL DEFAULT 1,
+    ItemName      VARCHAR(100)   NOT NULL,
+    HsCode        VARCHAR(10)    NOT NULL,
+    OriginCountry VARCHAR(50)    NOT NULL,
+    DestCountry   VARCHAR(50)    NOT NULL,
+    WeightKg      DECIMAL(10,2)  NOT NULL,
+    DeclaredValue DECIMAL(15,2)  NOT NULL,
+    Status        INT            NOT NULL DEFAULT 0,
+    UserID        VARCHAR(20)    NOT NULL,
+    DeclaredDate  DATE           NOT NULL,
+    CreatedAt     DATETIME       NOT NULL DEFAULT GETDATE()
+);
+
+-- 화물 이력 테이블
+CREATE TABLE customs.CargoHistory (
+    CargoId       INT            NOT NULL,
+    HistSeq       INT            NOT NULL,
+    CargoNumber   VARCHAR(20)    NOT NULL,
+    ItemName      VARCHAR(100)   NOT NULL,
+    HsCode        VARCHAR(10)    NOT NULL,
+    OriginCountry VARCHAR(50)    NOT NULL,
+    DestCountry   VARCHAR(50)    NOT NULL,
+    WeightKg      DECIMAL(10,2)  NOT NULL,
+    DeclaredValue DECIMAL(15,2)  NOT NULL,
+    Status        INT            NOT NULL DEFAULT 0,
+    UserID        VARCHAR(20)    NOT NULL,
+    DeclaredDate  DATE           NOT NULL,
+    CreatedAt     DATETIME       NOT NULL DEFAULT GETDATE(),
+    PRIMARY KEY (CargoId, HistSeq),
+    FOREIGN KEY (CargoId) REFERENCES customs.CargoStatus(CargoId)
+);
+
+-- 관세 계산 결과 테이블
+CREATE TABLE customs.TariffCalc (
+    TariffCalcId  INT            PRIMARY KEY IDENTITY(1,1),
+    CargoId       INT            NOT NULL,
+    DeclaredValue DECIMAL(15,2)  NOT NULL,
+    RatePercent   DECIMAL(5,2)   NOT NULL,
+    TariffAmount  DECIMAL(15,2)  NOT NULL,
+    CalcDate      DATETIME       NOT NULL DEFAULT GETDATE(),
+    FOREIGN KEY (CargoId) REFERENCES customs.CargoStatus(CargoId)
+);
+GO
+
+-- HistSeq 자동 채번 함수
+CREATE FUNCTION customs.GetNextHistSeq(@CargoId INT)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @NextSeq INT;
+    SELECT @NextSeq = ISNULL(MAX(HistSeq) + 1, 1)
+    FROM customs.CargoHistory
+    WHERE CargoId = @CargoId;
+    RETURN @NextSeq;
+END;
+GO

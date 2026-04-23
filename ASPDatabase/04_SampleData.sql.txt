@@ -1,0 +1,26 @@
+USE PortfolioDB;
+GO
+
+-- 관세율 샘플 데이터
+INSERT INTO customs.TariffRate (HsCode, ItemCategory, RatePercent) VALUES
+('8471.30', '노트북 컴퓨터',  0.00),
+('6101.20', '의류 (면)',     13.00),
+('0201.10', '쇠고기',        40.00),
+('8703.23', '승용차',         8.00);
+
+-- 화물 샘플 데이터
+INSERT INTO customs.CargoStatus
+(CargoNumber, LastHistSeq, ItemName, HsCode, OriginCountry, DestCountry, WeightKg, DeclaredValue, Status, UserID, DeclaredDate)
+VALUES
+('C20240001', 1, '노트북',    '8471.30', '중국',   '대한민국', 15.5,  2000000, 0, 'ADMIN', '2024-01-15'),
+('C20240002', 1, '면 티셔츠', '6101.20', '베트남', '대한민국', 30.0,   500000, 1, 'ADMIN', '2024-01-16'),
+('C20240003', 1, '쇠고기',    '0201.10', '미국',   '대한민국', 100.0, 1500000, 2, 'ADMIN', '2024-01-17');
+
+-- 이력 샘플 데이터
+INSERT INTO customs.CargoHistory
+(CargoId, HistSeq, CargoNumber, ItemName, HsCode, OriginCountry, DestCountry, WeightKg, DeclaredValue, Status, UserID, DeclaredDate)
+VALUES
+(1, 1, 'C20240001', '노트북',    '8471.30', '중국',   '대한민국', 15.5,  2000000, 0, 'ADMIN', '2024-01-15'),
+(2, 1, 'C20240002', '면 티셔츠', '6101.20', '베트남', '대한민국', 30.0,   500000, 1, 'ADMIN', '2024-01-16'),
+(3, 1, '쇠고기',    '쇠고기',    '0201.10', '미국',   '대한민국', 100.0, 1500000, 2, 'ADMIN', '2024-01-17');
+GO
