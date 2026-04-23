@@ -31,16 +31,16 @@
 
     화면 이미지
       메인화면
-        ![메인화면](screenshots/수출입 화물 관리 (Main).png)
+        ![메인화면](screenshots/main.png)
         
       수입 신고
-        ![수입신고](screenshots/수출입 화물 관리 (수입신고).png)
+        ![수입신고](screenshots/register.png)
 
       신고 수정
-        ![신고수정](screenshots/수출입 화물 관리 (신고수정).png)
+        ![신고수정](screenshots/update.png)
 
       세금 계산 
-        ![세금계산서](screenshots/수출입 화물 관리 (세금계산서).png)
+        ![세금계산서](screenshots/report.png)
       현재는 기능 구현에 집중하여 UI 디자인은 최소화하였습니다.
       추후 DevExpress Report Designer를 활용하여 
       실무 수준의 레이아웃으로 개선할 예정입니다.
