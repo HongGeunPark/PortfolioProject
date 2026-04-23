@@ -30,17 +30,17 @@
       MS-SQL (Database)
 
     화면 이미지
-      Main 화면
-        <img width="802" height="482" alt="image" src="https://github.com/user-attachments/assets/5c883cae-3279-4911-be16-47ece7ec7027" />
+      메인화면
+        ![메인화면](screenshots/수출입 화물 관리 (Main).png)
         
       수입 신고
-        <img width="397" height="249" alt="image" src="https://github.com/user-attachments/assets/528ea0c3-e045-4803-9319-0b8f57648387" />
+        ![수입신고](screenshots/수출입 화물 관리 (수입신고).png)
 
       신고 수정
-        <img width="514" height="364" alt="image" src="https://github.com/user-attachments/assets/a60320df-c406-4d05-af58-ad7acb0d751d" />
+        ![신고수정](screenshots/수출입 화물 관리 (신고수정).png)
 
       세금 계산 
-        <img width="738" height="622" alt="image" src="https://github.com/user-attachments/assets/6cf2c9a8-6068-4d2b-a952-ee08dc6a8b26" />
+        ![세금계산서](screenshots/수출입 화물 관리 (세금계산서).png)
       현재는 기능 구현에 집중하여 UI 디자인은 최소화하였습니다.
       추후 DevExpress Report Designer를 활용하여 
       실무 수준의 레이아웃으로 개선할 예정입니다.
