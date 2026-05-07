@@ -11,9 +11,10 @@
     수출입 화물의 신고 접수부터 통관 완료까지의 업무 프로세스를 구현했습니다.
     
     기술 스택
-      구분기술 Frontend : C#, .NET 8, WinForms, DevExpress
-              Backend : ASP.NET Core Web API
-              Database : MS-SQL (PortfolioDB) 아키텍처 Controller → Service → Repository
+      UI : C# (.NET 8), WinForms, DevExpress
+      Backend : ASP.NET Core Web API (.NET 8)
+      Database : MS-SQL (PortfolioDB) 
+      Architecture : Controller → Service → Repository
             
     주요 기능
       신고 접수 — 수출입 화물 신고 등록
