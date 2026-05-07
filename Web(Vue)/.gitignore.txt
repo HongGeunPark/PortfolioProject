@@ -1,0 +1,11 @@
+# Backend
+PortfolioProjectWeb_Backend.vs
+PortfolioProjectWeb_Backendbin
+PortfolioProjectWeb_Backendobj
+
+# Frontend
+PortfolioProjectWeb_Frontendnode_modules
+PortfolioProjectWeb_Frontenddist
+
+# 환경설정
+appsettings.Development.json
